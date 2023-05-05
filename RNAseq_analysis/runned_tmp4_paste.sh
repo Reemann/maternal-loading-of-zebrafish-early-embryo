@@ -1,0 +1,49 @@
+#!/bin/bash
+
+cd ~/maternal_loading/1.private_data/genes4_ko_analysis/RNAseq/diff_byTrans
+
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $2, $48, "-"}}' > mcm3l_1k_20181022_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $3, $48, "-"}}' > mcm6l_1k_20181022-2_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $4, $48, "-"}}' > mcm6l_1k_20181022_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $5, $48, "-"}}' > mcm6l_1k_20190503_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $6, $48, "-"}}' > mcm6l_1k_20190607_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $7, $48, "-"}}' > mcm6l_256_20190503_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $8, $48, "-"}}' > mcm6l_256_20190607_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $9, $48, "-"}}' > mcm6l_64_20190503_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $10, $48, "-"}}' > mcm6l_64_20190607_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $11, $48, "-"}}' > mcm6l_6hpf_20190503_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $12, $48, "-"}}' > mcm6l_oblong_20190503_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $13, $48, "-"}}' > mcm6l_oblong_20190607_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $14, $48, "-"}}' > mcm6l_oocyte_20200703-2_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $15, $48, "-"}}' > mcm6l_oocyte_20200703_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $16, $48, "-"}}' > npm2a_1k_20181022_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $17, $48, "-"}}' > npm2a_1k_20200515_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $18, $48, "-"}}' > npm2a_1k_20200531_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $19, $48, "-"}}' > npm2a_256_20200515_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $20, $48, "-"}}' > npm2a_256_20200531_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $21, $48, "-"}}' > npm2a_64_20200515_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $22, $48, "-"}}' > npm2a_64_20200531_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $23, $48, "-"}}' > npm2a_oblong_20200515_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $24, $48, "-"}}' > npm2a_oblong_20200531_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $25, $48, "-"}}' > npm2a_oocyte_20200904-2_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $26, $48, "-"}}' > npm2a_oocyte_20200904_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $27, $48, "-"}}' > orc1_1k_20181022-2_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $28, $48, "-"}}' > orc1_1k_20181022_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $29, $48, "-"}}' > orc1_oocyte_20200908-2_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $30, $48, "-"}}' > orc1_oocyte_20200908_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $31, $48, "-"}}' > wt_1k_20181022_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $32, $48, "-"}}' > wt_1k_20190503_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $33, $48, "-"}}' > wt_1k_20190607_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $34, $48, "-"}}' > wt_1k_20200515_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $35, $48, "-"}}' > wt_256_20190503_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $36, $48, "-"}}' > wt_256_20190607_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $37, $48, "-"}}' > wt_256_20200515_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $38, $48, "-"}}' > wt_512_20200515_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $39, $48, "-"}}' > wt_64_20190503_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $40, $48, "-"}}' > wt_64_20190607_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $41, $48, "-"}}' > wt_6hpf_20190503_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $42, $48, "-"}}' > wt_oblong_20190503_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $43, $48, "-"}}' > wt_oblong_20190607_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $44, $48, "-"}}' > wt_oblong_20200515_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $45, $48, "-"}}' > wt_oocyte_20200703-2_ensGene.count
+paste transcript_count_matrix.tab EnsGene.len | awk 'BEGIN{FS=OFS="\t"}{if($1==$47){print $1, $49, $46, $48, "-"}}' > wt_oocyte_20200703_ensGene.count
