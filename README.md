@@ -4,4 +4,4 @@ Codes for "**Systematic screening of functional maternal-specific chromatin regu
 
 
 # Citation
-Liu G, Wang Y, Wang X, Wang W, Cao Z, Zhang Y. 2023. Systematic screening of functional maternal-specific chromatin regulators in early embryonic development. (Under review)  
+***Liu G\*, Wang Y\*, Wang X\*, Wang W, Cao Z, Zhang Y$***. 2023. Systematic screening of functional maternal-specific chromatin regulators in early embryonic development. (Under review)  
