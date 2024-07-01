@@ -1,287 +1,545 @@
 #!/bin/bash
 
-##### re-download public data
-
-
-### ----- embryo -----
-
-# 01 embryo & tissue
 cd ~/maternal_loading/2.public_data
-download_raw_seq.py -p PRJNA189430 -f 'SRR1049814|SRR372787|SRR372788|SRR372789|SRR372790|SRR372791|SRR372792|SRR372793|SRR372794|SRR372795|SRR372796|SRR372797|SRR372798|SRR372799|SRR372800|SRR372801|SRR372802|SRR372803' -o 0_raw_data
-download_raw_seq.py -p PRJNA154389 -f 'SRR1049814|SRR372787|SRR372788|SRR372789|SRR372790|SRR372791|SRR372792|SRR372793|SRR372794|SRR372795|SRR372796|SRR372797|SRR372798|SRR372799|SRR372800|SRR372801|SRR372802|SRR372803' -o 0_raw_data
+
+function ena_meta_download {
+    project_accession=${1}
+    wget -O ${project_accession}.tsv "https://www.ebi.ac.uk/ena/portal/api/filereport?accession=${project_accession}&result=read_run&fields=sample_accession,experiment_accession,run_accession,scientific_name,library_layout,fastq_md5,fastq_ftp&format=tsv&download=true"
+}
+
+
+
+# ----- 01 PRJNA189430 PRJNA154389 early embryonic development paired-end -----
+
 cd 0_raw_data
-# embryo1
-# bash PRJNA189430.sh
-# /mnt/Storage/home/wangyiman/maternal_loading/2.public_data/0_raw_data/SRR1049814_2.fastq.gz: FAILED
-# egrep SRR1049814_2 PRJNA189430.sh | grep wget | cut -f 11-13 -d ' ' > PRJNA189430_reDownload.sh
-# bash PRJNA189430_reDownload.sh
-# mv SRR1049814_2.fastq.gz.1 SRR1049814_2.fastq.gz 
-# md5sum -c PRJNA189430.md5
-
-# embryo2
-# bash PRJNA154389.sh
-
-# /mnt/Storage/home/wangyiman/maternal_loading/2.public_data/0_raw_data/SRR372790_2.fastq.gz: FAILED
-# /mnt/Storage/home/wangyiman/maternal_loading/2.public_data/0_raw_data/SRR372792_2.fastq.gz: FAILED
-# /mnt/Storage/home/wangyiman/maternal_loading/2.public_data/0_raw_data/SRR372795_1.fastq.gz: FAILED
-# /mnt/Storage/home/wangyiman/maternal_loading/2.public_data/0_raw_data/SRR372795_2.fastq.gz: FAILED
-# /mnt/Storage/home/wangyiman/maternal_loading/2.public_data/0_raw_data/SRR372798_1.fastq.gz: FAILED
-# /mnt/Storage/home/wangyiman/maternal_loading/2.public_data/0_raw_data/SRR372798_2.fastq.gz: FAILED
-# /mnt/Storage/home/wangyiman/maternal_loading/2.public_data/0_raw_data/SRR372799_2.fastq.gz: FAILED
-
-# egrep 'SRR372790_2|SRR372792_2|SRR372795_1|SRR372795_2|SRR372798_1|SRR372798_2|SRR372799_2' PRJNA154389.sh | grep wget | cut -f 11-13 -d ' ' > PRJNA154389_reDownload.sh
-# bash PRJNA154389_reDownload.sh
-# md5sum -c PRJNA154389.md5 # failed again and again with "wget -c(continue)"
-
-# wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR372/SRR372790/SRR372790_2.fastq.gz
-# wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR372/SRR372792/SRR372792_2.fastq.gz
-# wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR372/SRR372795/SRR372795_1.fastq.gz
-# wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR372/SRR372795/SRR372795_2.fastq.gz
-# wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR372/SRR372798/SRR372798_1.fastq.gz
-# wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR372/SRR372798/SRR372798_2.fastq.gz
-# wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR372/SRR372799/SRR372799_2.fastq.gz
-
-# mv SRR372790_2.fastq.gz.1 SRR372790_2.fastq.gz
-# mv SRR372792_2.fastq.gz.1 SRR372792_2.fastq.gz
-# mv SRR372795_1.fastq.gz.1 SRR372795_1.fastq.gz
-# mv SRR372795_2.fastq.gz.1 SRR372795_2.fastq.gz
-# mv SRR372798_1.fastq.gz.1 SRR372798_1.fastq.gz
-# mv SRR372798_2.fastq.gz.1 SRR372798_2.fastq.gz
-# mv SRR372799_2.fastq.gz.1 SRR372799_2.fastq.gz
-
-# md5sum -c PRJNA154389.md5
-
-# 02 embryo1
-# bash PRJNA473799.sh
-# md5sum -c PRJNA473799.md5
-
-# 03 embryo2
-# bash PRJNA245102.sh
-# md5sum -c PRJNA245102.md5
-
-# 04 embryo2
-# bash PRJEB12982.sh
-# md5sum -c PRJEB12982.md5
-
-# 05 embryo1
-# bash PRJNA507426.sh
-# md5sum -c PRJNA507426.md5
-
-# 06 embryo1 & tissue
-# bash PRJNA493632.sh
-# md5sum -c PRJNA493632.md5
-
-# 07 embryo2
-# bash PRJNA597725.sh
-# md5sum -c PRJNA597725.md5
-
-# 08 embryo1
-# bash PRJNA488043.sh
-# md5sum -c PRJNA488043.md5
-
-# 09 embryo2
-# bash PRJNA558085.sh
-# md5sum -c PRJNA558085.md5
-
-# 10 embryo1 & tissue
-# bash PRJNA547573.sh
-# md5sum -c PRJNA547573.md5
-
-# SRR9211494.fastq.gz: FAILED
-# SRR9211497.fastq.gz: FAILED
-# SRR9211503.fastq.gz: FAILED
-
-# mv SRR9211494.fastq.gz.1 SRR9211494.fastq.gz
-# mv SRR9211497.fastq.gz.1 SRR9211497.fastq.gz
-# mv SRR9211503.fastq.gz.1 SRR9211503.fastq.gz
+for i in SRR1049814 SRR372787 SRR372788 SRR372789 SRR372790 SRR372791 SRR372792 SRR372793 SRR372794 SRR372795 SRR372796 SRR372797 SRR372798 SRR372799 SRR372800 SRR372801 SRR372802 SRR372803;do
+    enaDataGet -f fastq $i -d . > enaDataGet.log.${i} 2>&1
+done
+wait;
+cat enaDataGet.log.* >> enaDataGet.log
+rm enaDataGet.log.*
+ln -s SRR*/SRR*.gz .
 
 
-# 11 embryo2
-# bash PRJNA493827.sh
-# md5sum -c PRJNA493827.md5
+# ----- 02 Apr-24-2021 expression GSE114954 Mol Cell Wei Xie -----
 
-# SRR7942605_1.fastq.gz: FAILED
-# SRR7942605_2.fastq.gz: FAILED
-# SRR7942606_1.fastq.gz: FAILED
-# SRR7942608_1.fastq.gz: FAILED
-# SRR7942609_1.fastq.gz: FAILED
-# SRR7942609_2.fastq.gz: FAILED
-# SRR7942610_1.fastq.gz: FAILED
-# SRR7942611_1.fastq.gz: FAILED
-# SRR7942612_1.fastq.gz: FAILED
-# SRR7942612_2.fastq.gz: FAILED
-
-# egrep 'SRR7942605_1|SRR7942605_2|SRR7942606_1|SRR7942608_1|SRR7942609_1|SRR7942609_2|SRR7942610_1|SRR7942611_1|SRR7942612_1|SRR7942612_2' PRJNA493827.sh | grep ascp | cut -f 8-16 -d ' ' > PRJNA493827_reDownload.sh
-# egrep 'SRR7942605_1|SRR7942605_2|SRR7942606_1|SRR7942608_1|SRR7942609_1|SRR7942609_2|SRR7942610_1|SRR7942611_1|SRR7942612_1|SRR7942612_2' PRJNA493827.sh | grep wget | cut -f 8-9 -d ' ' > PRJNA493827_reDownload.sh
-# bash PRJNA493827_reDownload.sh
-
-# mv SRR7942605_1.fastq.gz.1 SRR7942605_1.fastq.gz
-# mv SRR7942605_2.fastq.gz.1 SRR7942605_2.fastq.gz
-# mv SRR7942606_1.fastq.gz.1 SRR7942606_1.fastq.gz
-# mv SRR7942608_1.fastq.gz.1 SRR7942608_1.fastq.gz
-# mv SRR7942609_1.fastq.gz.1 SRR7942609_1.fastq.gz
-# mv SRR7942609_2.fastq.gz.1 SRR7942609_2.fastq.gz
-# mv SRR7942610_1.fastq.gz.1 SRR7942610_1.fastq.gz
-# mv SRR7942611_1.fastq.gz.1 SRR7942611_1.fastq.gz
-# mv SRR7942612_1.fastq.gz.1 SRR7942612_1.fastq.gz
-# mv SRR7942612_2.fastq.gz.1 SRR7942612_2.fastq.gz
-# md5sum -c PRJNA493827.md5
+project_accession=PRJNA473799
+cd 0_raw_data
+ena_meta_download ${project_accession}
+mv ${project_accession}.tsv ${project_accession}.tsv.tmp
+cat <(head -1 ${project_accession}.tsv.tmp) <(egrep "SRR7235498|SRR7235499|SRR7235517|SRR7235518|SRR7235544|SRR7235545|SRR7762354|SRR7762355|SRR7762356|SRR7762357|SRR7235549|SRR7235550" ${project_accession}.tsv.tmp) > ${project_accession}.tsv
+rm ${project_accession}.tsv.tmp
+gen_download_from_ebi.py ${project_accession}.tsv ${project_accession}.sh
+bash ${project_accession}.sh
+md5_of_ENAfastq_generate.py ${project_accession}.tsv ${project_accession}.md5
+md5sum -c ${project_accession}.md5
+cd ..
 
 
-# 12 embryo1
-# bash PRJNA529645.sh
-# md5sum -c PRJNA529645.md5
+# ----- 03 expression GSE56977 GSM1531258 Oblong 3.5hpf Schier AF -----
 
-# SRR8799027_1.fastq.gz: FAILED
-# SRR8799028_2.fastq.gz: FAILED
-# SRR8799029_1.fastq.gz: FAILED
-# SRR8799030_1.fastq.gz: FAILED
-# SRR8799031_2.fastq.gz: FAILED
-# SRR8799032_1.fastq.gz: FAILED
-# SRR8799032_2.fastq.gz: FAILED
-
-# # egrep 'SRR8799027_1|SRR8799028_2|SRR8799029_1|SRR8799030_1|SRR8799031_2|SRR8799032_1|SRR8799032_2' PRJNA529645.sh | grep ascp | cut -f 8-16 -d ' ' > PRJNA529645_reDownload.sh
-# egrep 'SRR8799027_1|SRR8799028_2|SRR8799029_1|SRR8799030_1|SRR8799031_2|SRR8799032_1|SRR8799032_2' PRJNA529645.sh | grep wget | cut -f 8-9 -d ' ' > PRJNA529645_reDownload.sh
-# bash PRJNA529645_reDownload.sh
-
-# mv SRR8799027_1.fastq.gz.1 SRR8799027_1.fastq.gz
-# mv SRR8799028_2.fastq.gz.1 SRR8799028_2.fastq.gz
-# mv SRR8799029_1.fastq.gz.1 SRR8799029_1.fastq.gz
-# mv SRR8799030_1.fastq.gz.1 SRR8799030_1.fastq.gz
-# mv SRR8799031_2.fastq.gz.1 SRR8799031_2.fastq.gz
-# mv SRR8799032_1.fastq.gz.1 SRR8799032_1.fastq.gz
-# mv SRR8799032_2.fastq.gz.1 SRR8799032_2.fastq.gz
-
-# md5sum -c PRJNA529645.md5
+project_accession=PRJNA245102
+cd 0_raw_data
+ena_meta_download ${project_accession}
+mv ${project_accession}.tsv ${project_accession}.tsv.tmp
+cat <(head -1 ${project_accession}.tsv.tmp) <(egrep "SRR1621206" ${project_accession}.tsv.tmp) > ${project_accession}.tsv
+rm ${project_accession}.tsv.tmp
+gen_download_from_ebi.py ${project_accession}.tsv ${project_accession}.sh
+bash ${project_accession}.sh
+md5_of_ENAfastq_generate.py ${project_accession}.tsv ${project_accession}.md5
+md5sum -c ${project_accession}.md5
+cd ..
 
 
-# 13 embryo2
-# bash PRJNA505329.sh
-# md5sum -c PRJNA505329.md5
+# ----- 04 elife embryonic -----
 
-# SRR8182161_2.fastq.gz: FAILED
-# SRR8182164_1.fastq.gz: FAILED
-# SRR8182169_1.fastq.gz: FAILED
-# SRR8182171_1.fastq.gz: FAILED
-# SRR8182172_1.fastq.gz: FAILED
-# SRR8182172_2.fastq.gz: FAILED
-# SRR8182173_1.fastq.gz: FAILED
-# SRR8182173_2.fastq.gz: FAILED
-# SRR8182176_2.fastq.gz: FAILED
-
-# mv SRR8182161_2.fastq.gz.1 SRR8182161_2.fastq.gz
-# mv SRR8182164_1.fastq.gz.1 SRR8182164_1.fastq.gz
-# mv SRR8182169_1.fastq.gz.1 SRR8182169_1.fastq.gz
-# mv SRR8182171_1.fastq.gz.1 SRR8182171_1.fastq.gz
-# mv SRR8182172_1.fastq.gz.1 SRR8182172_1.fastq.gz
-# mv SRR8182172_2.fastq.gz.1 SRR8182172_2.fastq.gz
-# mv SRR8182173_1.fastq.gz.1 SRR8182173_1.fastq.gz
-# mv SRR8182173_2.fastq.gz.1 SRR8182173_2.fastq.gz
-# mv SRR8182176_2.fastq.gz.1 SRR8182176_2.fastq.gz
+project_accession=PRJEB12982
+cd 0_raw_data
+ena_meta_download ${project_accession}
+rm ${project_accession}.tsv.tmp
+gen_download_from_ebi.py ${project_accession}.tsv ${project_accession}.sh
+bash ${project_accession}.sh
+md5_of_ENAfastq_generate.py ${project_accession}.tsv ${project_accession}.md5
+md5sum -c ${project_accession}.md5
+cd ..
 
 
-# # egrep 'SRR8182161_2|SRR8182164_1|SRR8182169_1|SRR8182171_1|SRR8182172_1|SRR8182172_2|SRR8182173_1|SRR8182173_2|SRR8182176_2' PRJNA505329.sh | grep ascp | cut -f 8-16 -d ' ' > PRJNA505329_reDownload.sh
-# egrep 'SRR8182161_2|SRR8182164_1|SRR8182169_1|SRR8182171_1|SRR8182172_1|SRR8182172_2|SRR8182173_1|SRR8182173_2|SRR8182176_2' PRJNA505329.sh | grep wget | cut -f 8-9 -d ' ' > PRJNA505329_reDownload.sh
-# bash PRJNA505329_reDownload.sh
-# md5sum -c PRJNA505329.md5
+# --- 05 SRR8257203 SRR8257204 SRR8257205 
+
+project_accession=PRJNA507426
+cd 0_raw_data
+ena_meta_download ${project_accession}
+mv ${project_accession}.tsv ${project_accession}.tsv.tmp
+cat <(head -1 ${project_accession}.tsv.tmp) <(egrep "SRR8257203|SRR8257204|SRR8257205" ${project_accession}.tsv.tmp) > ${project_accession}.tsv
+rm ${project_accession}.tsv.tmp
+gen_download_from_ebi.py ${project_accession}.tsv ${project_accession}.sh
+bash ${project_accession}.sh
+md5_of_ENAfastq_generate.py ${project_accession}.tsv ${project_accession}.md5
+md5sum -c ${project_accession}.md5
+cd ..
 
 
-### ----- tissue -----
+# --- 06 PRJNA493632 
 
-# 14 tissue1
-# bash PRJNA491832.sh
-# md5sum -c PRJNA491832.md5
+project_accession=PRJNA493632
+cd 0_raw_data
+ena_meta_download ${project_accession}
+# rm ${project_accession}.tsv.tmp
+gen_download_from_ebi.py ${project_accession}.tsv ${project_accession}.sh
+bash ${project_accession}.sh
+md5_of_ENAfastq_generate.py ${project_accession}.tsv ${project_accession}.md5
+md5sum -c ${project_accession}.md5
+cd ..
 
-# 15 (tissue)
-# bash PRJNA529924.sh
-# md5sum -c PRJNA529924.md5
 
-# 16 tissue1
-# bash PRJNA527965.sh
-# md5sum -c PRJNA527965.md5
+# ----- 07 Jan-2-2020 GSE142599 28hpf/36hpf embryos -----
 
-# 17 tissue1
-# bash PRJNA597907.sh
-# md5sum -c PRJNA597907.md5
+project_accession=PRJNA597725
+cd 0_raw_data
+ena_meta_download ${project_accession}
+mv ${project_accession}.tsv ${project_accession}.tsv.tmp
+cat <(head -1 ${project_accession}.tsv.tmp) <(egrep "SRR10767278|SRR10767279|SRR10767280|SRR10767287|SRR10767288|SRR10767289" ${project_accession}.tsv.tmp) > ${project_accession}.tsv
+rm ${project_accession}.tsv.tmp
+gen_download_from_ebi.py ${project_accession}.tsv ${project_accession}.sh
+bash ${project_accession}.sh
+md5_of_ENAfastq_generate.py ${project_accession}.tsv ${project_accession}.md5
+md5sum -c ${project_accession}.md5
+cd ..
 
-# 18 tissue1
-# bash PRJNA358007.sh
-# md5sum -c PRJNA358007.md5
 
-# SRR5119938.fastq.gz: FAILED
 
-# egrep 'SRR5119938' PRJNA358007.sh | grep ascp | cut -f 8-16 -d ' ' > PRJNA358007_reDownload.sh
-# bash PRJNA358007_reDownload.sh
-# md5sum -c PRJNA358007.md5
+# ----- 08 Jan-5-2020 GSE119070 1cell/high/24hpf whole embryo -----
 
-# 19 tissue1
-# bash PRJNA541476.sh
-# md5sum -c PRJNA541476.md5
+project_accession=PRJNA488043
+cd 0_raw_data
+ena_meta_download ${project_accession}
+mv ${project_accession}.tsv ${project_accession}.tsv.tmp
+cat <(head -1 ${project_accession}.tsv.tmp) <(egrep "SRR775782[5-9]|SRR7757830|SRR9962799|SRR996280[0-3]|SRR996281[7-9]|SRR996282[0-1]" ${project_accession}.tsv.tmp) > ${project_accession}.tsv
+rm ${project_accession}.tsv.tmp
+gen_download_from_ebi.py ${project_accession}.tsv ${project_accession}.sh
+bash ${project_accession}.sh
+md5_of_ENAfastq_generate.py ${project_accession}.tsv ${project_accession}.md5
+md5sum -c ${project_accession}.md5
+cd ..
 
-# 20 tissue2 tmp
-# bash PRJNA563669.sh
-# md5sum -c PRJNA563669.md5
 
-# 21 tissue2 tmp
-# bash PRJNA546018.sh
-# md5sum -c PRJNA546018.md5
 
-# 22 tissue2 tmp
-# bash PRJNA485080.sh
-# md5sum -c PRJNA485080.md5
 
-# 23 tissue2 tmp
-# bash PRJNA549478.sh
-# md5sum -c PRJNA549478.md5
+# ----- 09 Jan-6-2020 GSE135237 36hpf/72hpf neural crest cells -----
 
-# 24 tissue2 tmp
-# bash PRJNA490132.sh
-# md5sum -c PRJNA490132.md5
+project_accession=PRJNA558085
+cd 0_raw_data
+ena_meta_download ${project_accession}
+mv ${project_accession}.tsv ${project_accession}.tsv.tmp
+cat <(head -1 ${project_accession}.tsv.tmp) <(egrep "SRR987991[345678]" ${project_accession}.tsv.tmp) > ${project_accession}.tsv
+rm ${project_accession}.tsv.tmp
+gen_download_from_ebi.py ${project_accession}.tsv ${project_accession}.sh
+bash ${project_accession}.sh
+md5_of_ENAfastq_generate.py ${project_accession}.tsv ${project_accession}.md5
+md5sum -c ${project_accession}.md5
+cd ..
 
-# 25 tissue2 tmp
-bash PRJNA550048.sh
-md5sum -c PRJNA550048.md5
 
-# 26
-bash PRJNA514721.sh
-md5sum -c PRJNA514721.md5
+# ----- 10 Jan-9-2020 GSE132304 20ss/52hpf/72hpf skin -----
 
-# 27
-bash PRJNA554813.sh
-md5sum -c PRJNA554813.md5
+project_accession=PRJNA547573
+cd 0_raw_data
+ena_meta_download ${project_accession}
+mv ${project_accession}.tsv ${project_accession}.tsv.tmp
+cat <(head -1 ${project_accession}.tsv.tmp) <(egrep "SRR921148[4589]|SRR921149[123478]|SRR921150[1234]" ${project_accession}.tsv.tmp) > ${project_accession}.tsv
+rm ${project_accession}.tsv.tmp
+gen_download_from_ebi.py ${project_accession}.tsv ${project_accession}.sh
+bash ${project_accession}.sh
+md5_of_ENAfastq_generate.py ${project_accession}.tsv ${project_accession}.md5
+md5sum -c ${project_accession}.md5
+cd ..
 
-# 28
-bash PRJNA560203.sh
-md5sum -c PRJNA560203.md5
+# ----- 11 Feb-4-2020 GSE120643 0/2/3/4/6hpf embryo -----
 
-# 29
-bash PRJNA555341.sh
-md5sum -c PRJNA555341.md5
+project_accession=PRJNA493827
+cd 0_raw_data
+ena_meta_download ${project_accession}
+mv ${project_accession}.tsv ${project_accession}.tsv.tmp
+cat <(head -1 ${project_accession}.tsv.tmp) <(egrep "SRR794260[5-9]|SRR794261[0-4]" ${project_accession}.tsv.tmp) > ${project_accession}.tsv
+rm ${project_accession}.tsv.tmp
+gen_download_from_ebi.py ${project_accession}.tsv ${project_accession}.sh
+bash ${project_accession}.sh
+md5_of_ENAfastq_generate.py ${project_accession}.tsv ${project_accession}.md5
+md5sum -c ${project_accession}.md5
+cd ..
 
-# 30 tissue1
-# bash PRJNA479503.sh
-md5sum -c PRJNA479503.md5
 
-# 31
-bash PRJNA483985.sh
-md5sum -c PRJNA483985.md5
+# ----- 12 Feb-6-2020 7/24hpf pgc/somatic -----
 
-# 32
-bash PRJNA378487.sh
-md5sum -c PRJNA378487.md5
+project_accession=PRJNA529645
+cd 0_raw_data
+ena_meta_download ${project_accession}
+mv ${project_accession}.tsv ${project_accession}.tsv.tmp
+cat <(head -1 ${project_accession}.tsv.tmp) <(egrep "SRR879902[6-9]|SRR879903[0-3]" ${project_accession}.tsv.tmp) > ${project_accession}.tsv
+rm ${project_accession}.tsv.tmp
+gen_download_from_ebi.py ${project_accession}.tsv ${project_accession}.sh
+bash ${project_accession}.sh
+md5_of_ENAfastq_generate.py ${project_accession}.tsv ${project_accession}.md5
+md5sum -c ${project_accession}.md5
+cd ..
 
-# 33 tissue1 tmp
-bash PRJNA523219.sh
-md5sum -c PRJNA523219.md5
 
-# 34 embryo2
-# bash PRJNA476105.sh
-# md5sum -c PRJNA476105.md5
+# ----- 13 Feb-22-2020 4/7/24/36 pgc/somatic -----
 
-# 35
-bash PRJNA436713.sh
-md5sum -c PRJNA436713.md5
+project_accession=PRJNA505329
+cd 0_raw_data
+ena_meta_download ${project_accession}
+mv ${project_accession}.tsv ${project_accession}.tsv.tmp
+cat <(head -1 ${project_accession}.tsv.tmp) <(egrep "SRR818216[1-9]|SRR818217[0-6]" ${project_accession}.tsv.tmp) > ${project_accession}.tsv
+rm ${project_accession}.tsv.tmp
+gen_download_from_ebi.py ${project_accession}.tsv ${project_accession}.sh
+bash ${project_accession}.sh
+md5_of_ENAfastq_generate.py ${project_accession}.tsv ${project_accession}.md5
+md5sum -c ${project_accession}.md5
+cd ..
 
-# 36
-bash PRJNA515911.sh
-md5sum -c PRJNA515911.md5sum
+
+# --- 14 SRR7875953
+
+project_accession=PRJNA491832
+cd 0_raw_data
+ena_meta_download ${project_accession}
+mv ${project_accession}.tsv ${project_accession}.tsv.tmp
+cat <(head -1 ${project_accession}.tsv.tmp) <(egrep "SRR7875953" ${project_accession}.tsv.tmp) > ${project_accession}.tsv
+rm ${project_accession}.tsv.tmp
+gen_download_from_ebi.py ${project_accession}.tsv ${project_accession}.sh
+bash ${project_accession}.sh
+md5_of_ENAfastq_generate.py ${project_accession}.tsv ${project_accession}.md5
+md5sum -c ${project_accession}.md5
+cd ..
+
+
+# --- 15 SRR8816377 SRR8816378 SRR8816379
+
+project_accession=PRJNA529924
+cd 0_raw_data
+ena_meta_download ${project_accession}
+mv ${project_accession}.tsv ${project_accession}.tsv.tmp
+cat <(head -1 ${project_accession}.tsv.tmp) <(egrep "SRR8816377|SRR8816378|SRR8816379" ${project_accession}.tsv.tmp) > ${project_accession}.tsv
+rm ${project_accession}.tsv.tmp
+gen_download_from_ebi.py ${project_accession}.tsv ${project_accession}.sh
+bash ${project_accession}.sh
+md5_of_ENAfastq_generate.py ${project_accession}.tsv ${project_accession}.md5
+md5sum -c ${project_accession}.md5
+cd ..
+
+
+# ----- 16 Jan-1-2020 GSE128511 56 hpf heart -----
+
+project_accession=PRJNA527965
+cd 0_raw_data
+ena_meta_download ${project_accession}
+mv ${project_accession}.tsv ${project_accession}.tsv.tmp
+cat <(head -1 ${project_accession}.tsv.tmp) <(egrep "SRR8749827|SRR8749828" ${project_accession}.tsv.tmp) > ${project_accession}.tsv
+rm ${project_accession}.tsv.tmp
+gen_download_from_ebi.py ${project_accession}.tsv ${project_accession}.sh
+bash ${project_accession}.sh
+md5_of_ENAfastq_generate.py ${project_accession}.tsv ${project_accession}.md5
+md5sum -c ${project_accession}.md5
+cd ..
+
+
+# ----- 17 Jan-2-2020 GSE142673 5dpf (Whole-larvae total RNA) -----
+
+project_accession=PRJNA597907
+cd 0_raw_data
+ena_meta_download ${project_accession}
+mv ${project_accession}.tsv ${project_accession}.tsv.tmp
+cat <(head -1 ${project_accession}.tsv.tmp) <(egrep "SRR10776672|SRR10776673|SRR10776674" ${project_accession}.tsv.tmp) > ${project_accession}.tsv
+rm ${project_accession}.tsv.tmp
+gen_download_from_ebi.py ${project_accession}.tsv ${project_accession}.sh
+bash ${project_accession}.sh
+md5_of_ENAfastq_generate.py ${project_accession}.tsv ${project_accession}.md5
+md5sum -c ${project_accession}.md5
+cd ..
+
+
+
+# --- 18 SRR5119935 SRR5119936 SRR5119937 SRR5119938 SRR5119939 SRR5119940 
+
+project_accession=PRJNA358007
+cd 0_raw_data
+ena_meta_download ${project_accession}
+mv ${project_accession}.tsv ${project_accession}.tsv.tmp
+cat <(head -1 ${project_accession}.tsv.tmp) <(egrep "SRR5119935|SRR5119936|SRR5119937|SRR5119938|SRR5119939|SRR5119940" ${project_accession}.tsv.tmp) > ${project_accession}.tsv
+rm ${project_accession}.tsv.tmp
+gen_download_from_ebi.py ${project_accession}.tsv ${project_accession}.sh
+bash ${project_accession}.sh
+md5_of_ENAfastq_generate.py ${project_accession}.tsv ${project_accession}.md5
+md5sum -c ${project_accession}.md5
+cd ..
+
+
+# --- 19 SRR9022957 SRR9022958 SRR9022959 
+
+project_accession=PRJNA541476
+cd 0_raw_data
+ena_meta_download ${project_accession}
+mv ${project_accession}.tsv ${project_accession}.tsv.tmp
+cat <(head -1 ${project_accession}.tsv.tmp) <(egrep "SRR9022957|SRR9022958|SRR9022959" ${project_accession}.tsv.tmp) > ${project_accession}.tsv
+rm ${project_accession}.tsv.tmp
+gen_download_from_ebi.py ${project_accession}.tsv ${project_accession}.sh
+bash ${project_accession}.sh
+md5_of_ENAfastq_generate.py ${project_accession}.tsv ${project_accession}.md5
+md5sum -c ${project_accession}.md5
+cd ..
+
+
+# ----- 20 Dec-30-2019 GSE136786 valve cell -----
+
+project_accession=PRJNA563669
+cd 0_raw_data
+ena_meta_download ${project_accession}
+mv ${project_accession}.tsv ${project_accession}.tsv.tmp
+cat <(head -1 ${project_accession}.tsv.tmp) <(egrep "SRR10060610|SRR10060611|SRR10060612" ${project_accession}.tsv.tmp) > ${project_accession}.tsv
+rm ${project_accession}.tsv.tmp
+gen_download_from_ebi.py ${project_accession}.tsv ${project_accession}.sh
+bash ${project_accession}.sh
+md5_of_ENAfastq_generate.py ${project_accession}.tsv ${project_accession}.md5
+md5sum -c ${project_accession}.md5
+cd ..
+
+
+# ----- 21 Dec-31-2019 GSE132141 retina Muller cells -----
+
+project_accession=PRJNA546018
+cd 0_raw_data
+ena_meta_download ${project_accession}
+mv ${project_accession}.tsv ${project_accession}.tsv.tmp
+cat <(head -1 ${project_accession}.tsv.tmp) <(egrep "SRR9189638|SRR9189639|SRR9189640" ${project_accession}.tsv.tmp) > ${project_accession}.tsv
+rm ${project_accession}.tsv.tmp
+gen_download_from_ebi.py ${project_accession}.tsv ${project_accession}.sh
+bash ${project_accession}.sh
+md5_of_ENAfastq_generate.py ${project_accession}.tsv ${project_accession}.md5
+md5sum -c ${project_accession}.md5
+cd ..
+
+
+# ----- 22 Jan-2-2020 GSE128511 5/6 mpf kidney -----
+
+project_accession=PRJNA485080
+cd 0_raw_data
+ena_meta_download ${project_accession}
+mv ${project_accession}.tsv ${project_accession}.tsv.tmp
+cat <(head -1 ${project_accession}.tsv.tmp) <(egrep "SRR7659031|SRR7659032|SRR7659033|SRR7659034" ${project_accession}.tsv.tmp) > ${project_accession}.tsv
+rm ${project_accession}.tsv.tmp
+gen_download_from_ebi.py ${project_accession}.tsv ${project_accession}.sh
+bash ${project_accession}.sh
+md5_of_ENAfastq_generate.py ${project_accession}.tsv ${project_accession}.md5
+md5sum -c ${project_accession}.md5
+cd ..
+
+
+----- 23 Jan-3-2020 GSE132927 kidney HSC gata2a/runx1 FACS -----
+
+project_accession=PRJNA549478
+cd 0_raw_data
+ena_meta_download ${project_accession}
+mv ${project_accession}.tsv ${project_accession}.tsv.tmp
+cat <(head -1 ${project_accession}.tsv.tmp) <(egrep "SRR9320538|SRR9320539|SRR9320540" ${project_accession}.tsv.tmp) > ${project_accession}.tsv
+rm ${project_accession}.tsv.tmp
+gen_download_from_ebi.py ${project_accession}.tsv ${project_accession}.sh
+bash ${project_accession}.sh
+md5_of_ENAfastq_generate.py ${project_accession}.tsv ${project_accession}.md5
+md5sum -c ${project_accession}.md5
+cd ..
+
+
+# ----- 24 Jan-3-2020 GSE119718 4dpf/5dpf vascular muscle acta2/foxc1b/kdrl FACS -----
+
+project_accession=PRJNA490132
+cd 0_raw_data
+ena_meta_download ${project_accession}
+mv ${project_accession}.tsv ${project_accession}.tsv.tmp
+cat <(head -1 ${project_accession}.tsv.tmp) <(egrep "SRR78137*" ${project_accession}.tsv.tmp) > ${project_accession}.tsv
+rm ${project_accession}.tsv.tmp
+gen_download_from_ebi.py ${project_accession}.tsv ${project_accession}.sh
+bash ${project_accession}.sh
+md5_of_ENAfastq_generate.py ${project_accession}.tsv ${project_accession}.md5
+md5sum -c ${project_accession}.md5
+cd ..
+
+
+# ----- 25 Jan-7-2020 GSE133130 heart: ventricle -----
+
+project_accession=PRJNA550048
+cd 0_raw_data
+ena_meta_download ${project_accession}
+mv ${project_accession}.tsv ${project_accession}.tsv.tmp
+cat <(head -1 ${project_accession}.tsv.tmp) <(egrep "SRR933640[56789]" ${project_accession}.tsv.tmp) > ${project_accession}.tsv
+rm ${project_accession}.tsv.tmp
+gen_download_from_ebi.py ${project_accession}.tsv ${project_accession}.sh
+bash ${project_accession}.sh
+md5_of_ENAfastq_generate.py ${project_accession}.tsv ${project_accession}.md5
+md5sum -c ${project_accession}.md5
+cd ..
+
+
+# ----- 26 Jan-8-2020 GSE124970 intestinal epithelial cells -----
+
+project_accession=PRJNA514721
+cd 0_raw_data
+ena_meta_download ${project_accession}
+mv ${project_accession}.tsv ${project_accession}.tsv.tmp
+cat <(head -1 ${project_accession}.tsv.tmp) <(egrep "SRR843510[456789]" ${project_accession}.tsv.tmp) > ${project_accession}.tsv
+rm ${project_accession}.tsv.tmp
+gen_download_from_ebi.py ${project_accession}.tsv ${project_accession}.sh
+bash ${project_accession}.sh
+md5_of_ENAfastq_generate.py ${project_accession}.tsv ${project_accession}.md5
+md5sum -c ${project_accession}.md5
+cd ..
+
+
+# ----- 27 Jan-9-2020 GSE134345 5mpf ovary -----
+
+project_accession=PRJNA554813
+cd 0_raw_data
+ena_meta_download ${project_accession}
+mv ${project_accession}.tsv ${project_accession}.tsv.tmp
+cat <(head -1 ${project_accession}.tsv.tmp) <(egrep "SRR9693179" ${project_accession}.tsv.tmp) > ${project_accession}.tsv
+rm ${project_accession}.tsv.tmp
+gen_download_from_ebi.py ${project_accession}.tsv ${project_accession}.sh
+bash ${project_accession}.sh
+md5_of_ENAfastq_generate.py ${project_accession}.tsv ${project_accession}.md5
+md5sum -c ${project_accession}.md5
+cd ..
+
+
+# ----- 28 Jan-10-2020 GSE135823 3mpf heart -----
+
+project_accession=PRJNA560203
+cd 0_raw_data
+ena_meta_download ${project_accession}
+mv ${project_accession}.tsv ${project_accession}.tsv.tmp
+cat <(head -1 ${project_accession}.tsv.tmp) <(egrep "SRR996639[456]" ${project_accession}.tsv.tmp) > ${project_accession}.tsv
+rm ${project_accession}.tsv.tmp
+gen_download_from_ebi.py ${project_accession}.tsv ${project_accession}.sh
+bash ${project_accession}.sh
+md5_of_ENAfastq_generate.py ${project_accession}.tsv ${project_accession}.md5
+md5sum -c ${project_accession}.md5
+cd ..
+
+
+# ----- 29 Feb-9-2020 2mpf liver -----
+
+project_accession=PRJNA555341
+cd 0_raw_data
+ena_meta_download ${project_accession}
+mv ${project_accession}.tsv ${project_accession}.tsv.tmp
+cat <(head -1 ${project_accession}.tsv.tmp) <(egrep "SRR970799[01]" ${project_accession}.tsv.tmp) > ${project_accession}.tsv
+rm ${project_accession}.tsv.tmp
+gen_download_from_ebi.py ${project_accession}.tsv ${project_accession}.sh
+bash ${project_accession}.sh
+md5_of_ENAfastq_generate.py ${project_accession}.tsv ${project_accession}.md5
+md5sum -c ${project_accession}.md5
+cd ..
+
+
+# ----- 30 Feb-9-2020 adult testis -----
+
+project_accession=PRJNA479503
+cd 0_raw_data
+ena_meta_download ${project_accession}
+mv ${project_accession}.tsv ${project_accession}.tsv.tmp
+cat <(head -1 ${project_accession}.tsv.tmp) <(egrep "SRR746867[4-9]|SRR746868[0-3]" ${project_accession}.tsv.tmp) > ${project_accession}.tsv
+rm ${project_accession}.tsv.tmp
+gen_download_from_ebi.py ${project_accession}.tsv ${project_accession}.sh
+bash ${project_accession}.sh
+md5_of_ENAfastq_generate.py ${project_accession}.tsv ${project_accession}.md5
+md5sum -c ${project_accession}.md5
+cd ..
+
+
+# ----- 31 Feb-18-2020 4dpf podocyte/endothelium -----
+
+project_accession=PRJNA483985
+cd 0_raw_data
+ena_meta_download ${project_accession}
+mv ${project_accession}.tsv ${project_accession}.tsv.tmp
+cat <(head -1 ${project_accession}.tsv.tmp) <(egrep "SRR763347[7-9]|SRR763348[6-8]" ${project_accession}.tsv.tmp) > ${project_accession}.tsv
+rm ${project_accession}.tsv.tmp
+gen_download_from_ebi.py ${project_accession}.tsv ${project_accession}.sh
+bash ${project_accession}.sh
+md5_of_ENAfastq_generate.py ${project_accession}.tsv ${project_accession}.md5
+md5sum -c ${project_accession}.md5
+cd ..
+
+
+# ----- 32 Feb-19-2020 3dpf kidney -----
+
+project_accession=PRJNA378487
+cd 0_raw_data
+ena_meta_download ${project_accession}
+mv ${project_accession}.tsv ${project_accession}.tsv.tmp
+cat <(head -1 ${project_accession}.tsv.tmp) <(egrep "SRR532050[0-2]" ${project_accession}.tsv.tmp) > ${project_accession}.tsv
+rm ${project_accession}.tsv.tmp
+gen_download_from_ebi.py ${project_accession}.tsv ${project_accession}.sh
+bash ${project_accession}.sh
+md5_of_ENAfastq_generate.py ${project_accession}.tsv ${project_accession}.md5
+md5sum -c ${project_accession}.md5
+cd ..
+
+
+# ----- 33 Feb-20-2020 adult epidermis cLCs(conventional Langerhans cells)/Keratinocytes/MLCs/Neutrophils/T -----
+
+project_accession=PRJNA523219
+cd 0_raw_data
+ena_meta_download ${project_accession}
+mv ${project_accession}.tsv ${project_accession}.tsv.tmp
+cat <(head -1 ${project_accession}.tsv.tmp) <(egrep "SRR859173[6-9]|SRR859174[0-9]|SRR859175[0-2]" ${project_accession}.tsv.tmp) > ${project_accession}.tsv
+rm ${project_accession}.tsv.tmp
+gen_download_from_ebi.py ${project_accession}.tsv ${project_accession}.sh
+bash ${project_accession}.sh
+md5_of_ENAfastq_generate.py ${project_accession}.tsv ${project_accession}.md5
+md5sum -c ${project_accession}.md5
+cd ..
+
+
+# ----- 34 Feb-28-2020 ovray -----
+
+project_accession=PRJNA476105
+cd 0_raw_data
+ena_meta_download ${project_accession}
+mv ${project_accession}.tsv ${project_accession}.tsv.tmp
+cat <(head -1 ${project_accession}.tsv.tmp) <(egrep "SRR7341815" ${project_accession}.tsv.tmp) > ${project_accession}.tsv
+rm ${project_accession}.tsv.tmp
+gen_download_from_ebi.py ${project_accession}.tsv ${project_accession}.sh
+bash ${project_accession}.sh
+md5_of_ENAfastq_generate.py ${project_accession}.tsv ${project_accession}.md5
+md5sum -c ${project_accession}.md5
+cd ..
+
+
+# ----- 35 Feb-28-2020 muscle -----
+
+project_accession=PRJNA436713
+cd 0_raw_data
+ena_meta_download ${project_accession}
+mv ${project_accession}.tsv ${project_accession}.tsv.tmp
+cat <(head -1 ${project_accession}.tsv.tmp) <(egrep "SRR679877[5-7]" ${project_accession}.tsv.tmp) > ${project_accession}.tsv
+rm ${project_accession}.tsv.tmp
+gen_download_from_ebi.py ${project_accession}.tsv ${project_accession}.sh
+bash ${project_accession}.sh
+md5_of_ENAfastq_generate.py ${project_accession}.tsv ${project_accession}.md5
+md5sum -c ${project_accession}.md5
+cd ..
+
+
+# ----- 36 Mar-1-2020 beta_cell -----
+
+project_accession=PRJNA515911
+cd 0_raw_data
+ena_meta_download ${project_accession}
+mv ${project_accession}.tsv ${project_accession}.tsv.tmp
+cat <(head -1 ${project_accession}.tsv.tmp) <(egrep "SRR845690[67]" ${project_accession}.tsv.tmp) > ${project_accession}.tsv
+rm ${project_accession}.tsv.tmp
+gen_download_from_ebi.py ${project_accession}.tsv ${project_accession}.sh
+bash ${project_accession}.sh
+md5_of_ENAfastq_generate.py ${project_accession}.tsv ${project_accession}.md5
+md5sum -c ${project_accession}.md5
+cd ..
