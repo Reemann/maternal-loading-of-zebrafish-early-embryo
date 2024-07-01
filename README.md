@@ -1,8 +1,8 @@
-**Screening of functional maternal-specific chromatin regulators in early embryonic development**"
+# Screening of functional maternal-specific chromatin regulators in early embryonic development
 
-# Dependencies
+## Dependencies
 
-## Softwares
+### Softwares
 
 - Python3 (≥3.6)
 - Cutadapt (3.7)
@@ -16,7 +16,7 @@
 - BEDtools (2.27.1)
 - MACS2 (2.1.1.20160309)
 
-## Input & Source Files
+### Input & Source Files
 
 - **Public Raw Sequencing Data:** Can be downloaded using the script located at `1_screening_public_RNA-seq_data/step1_download.sh`.
 
@@ -28,7 +28,7 @@
   - **Chromosome Size Files:** `danRer11_2.chrom.sizes` and `genome_danRer11_2_main.chrom.sizes` are available at the same directory as above.
 
 
-# Code Files
+## Code Files
 
 - **Public RNA-seq Data Analysis:**
   - Scripts for screening maternal factors using public RNA-seq data (related to Part I of the article results) are located in `1_screening_public_RNA-seq_data`.
@@ -40,5 +40,5 @@
   - Scripts for analyzing WGS data (related to Part IV of the article results) are available in `3_WGS_data_analysis`.
 
 
-# Citation:
+## Citation:
 **Wang Y\*, Wang X\*, Wang W, Cao Z, Zhang Y$, Liu G$**. 2024. Screening of functional maternal-specific chromatin regulators in early embryonic development. *Under Review*.
