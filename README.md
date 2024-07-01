@@ -38,6 +38,9 @@
   
 - **Whole-Genome Sequencing (WGS) Data Analysis:**
   - Scripts for analyzing WGS data (related to Part IV of the article results) are available in `3_WGS_data_analysis`.
+ 
+- **Small utilities:**
+  - Scripts for small utilities used in screening and analyzing process are collected in `basic_utilities`.
 
 
 ## Citation:
