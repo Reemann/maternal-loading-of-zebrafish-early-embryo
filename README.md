@@ -23,7 +23,6 @@
 - **Private Raw Sequencing Data:** Available from the GSA database under the accession number CRA010494.
 
 - **Source Files for Sequencing Data Processing:** These files are located in `genome_danRer11_2`:
-  - **HISAT2 Mapping Index:** Located in `genome_danRer11_2/hisat2` with the ht2_index_base named `danRer11_2_main` (genome version excluding small scaffolds).
   - **ENSEMBL Annotation File:** Optional file `danRer11_2.ensGene.gtf` located in `genome_danRer11_2/ensGene`.
   - **Chromosome Size Files:** `danRer11_2.chrom.sizes` and `genome_danRer11_2_main.chrom.sizes` are available at the same directory as above.
 
